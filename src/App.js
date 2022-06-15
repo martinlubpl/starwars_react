@@ -9,29 +9,40 @@ class App extends Component {
     super();
 
     this.state = {
-      name: { firstName: 'Marcin', lastName: 'MAjewski' },
-      text2: 'Text2'
+      starwars: [
+        {
+          name: 'Luke Skywalker',
+          id: '1',
+        },
+        {
+          name: 'Obi-Wan Kenobi',
+          id: '2',
+        },
+        {
+          name: 'Han Solo',
+          id: '3',
+        },
+        {
+          name: 'Martin Majewski',
+          id: '4',
+        }
+      ]
+
     }
   }
 
   render() {
     return (
       <div className="App" >
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hello {this.state.name.firstName} {this.state.name.lastName} and the 2nd text: {this.state.text2}
-          </p>
-          <button onClick={() => {
-            this.setState(() => {
-              return {
-                name: { firstName: "mmm", lastName: "sss" },
-              }
-            }, () => {
-              console.log(this.state);
-            })
-          }} >change text</button>
-        </header>
+        {
+          this.state.starwars.map((character) => {
+            return (
+              <div>
+                <h1 key={character.id}>{character.name}</h1>
+              </div>
+            );
+          })
+        }
       </div>
     );
   }
