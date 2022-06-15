@@ -23,7 +23,13 @@ class App extends Component {
             Hello {this.state.name.firstName} {this.state.name.lastName} and the 2nd text: {this.state.text2}
           </p>
           <button onClick={() => {
-            this.setState({ name: { firstName: 'mmm', lastName: 'sss' } })
+            this.setState(() => {
+              return {
+                name: { firstName: "mmm", lastName: "sss" },
+              }
+            }, () => {
+              console.log(this.state);
+            })
           }} >change text</button>
         </header>
       </div>
