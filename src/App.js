@@ -10,6 +10,7 @@ class App extends Component {
 
     this.state = {
       starwars: [],
+      searchField: '',
     }
   }
 
@@ -20,16 +21,33 @@ class App extends Component {
         return { starwars: users }
       },
         () => {
-          console.log(this.state);
+          // console.log(this.state);
         }
       ))
   }
 
+
+
   render() {
+
+    const filteredNames = this.state.starwars.filter((character) => {
+      return character.name.toLowerCase().includes(this.state.searchField);
+    });
+
     return (
       <div className="App" >
+        <input className='search-box'
+          type='search'
+          placeholder='search'
+          onChange={(event) => {
+            const searchField = event.target.value.toLowerCase();
+
+            this.setState(() => {
+              return { searchField }; // shorthand for searchfield:searchField
+            })
+          }} />
         {
-          this.state.starwars.map((character) => {
+          filteredNames.map((character) => {
             return (
               <div>
                 <h1 key={character.id}>{character.name}</h1>
