@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -9,26 +9,20 @@ class App extends Component {
     super();
 
     this.state = {
-      starwars: [
-        {
-          name: 'Luke Skywalker',
-          id: '1',
-        },
-        {
-          name: 'Obi-Wan Kenobi',
-          id: '2',
-        },
-        {
-          name: 'Han Solo',
-          id: '3',
-        },
-        {
-          name: 'Martin Majewski',
-          id: '4',
-        }
-      ]
-
+      starwars: [],
     }
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then((users) => this.setState(() => {
+        return { starwars: users }
+      },
+        () => {
+          console.log(this.state);
+        }
+      ))
   }
 
   render() {
