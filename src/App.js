@@ -26,12 +26,22 @@ class App extends Component {
       ))
   }
 
+  // function called on search field change
+  onSearchChange = (event) => {
+    const searchField = event.target.value.toLowerCase();
+
+    this.setState(() => {
+      return { searchField }; // shorthand for searchfield:searchField
+    })
+  }
 
 
   render() {
+    const { starwars, searchField } = this.state;
+    const { onSearchChange } = this;
 
-    const filteredNames = this.state.starwars.filter((character) => {
-      return character.name.toLowerCase().includes(this.state.searchField);
+    const filteredNames = starwars.filter((character) => {
+      return character.name.toLowerCase().includes(searchField);
     });
 
     return (
@@ -39,13 +49,7 @@ class App extends Component {
         <input className='search-box'
           type='search'
           placeholder='search'
-          onChange={(event) => {
-            const searchField = event.target.value.toLowerCase();
-
-            this.setState(() => {
-              return { searchField }; // shorthand for searchfield:searchField
-            })
-          }} />
+          onChange={onSearchChange} />
         {
           filteredNames.map((character) => {
             return (
