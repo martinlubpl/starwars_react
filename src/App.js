@@ -46,17 +46,8 @@ class App extends Component {
 
     return (
       <div className="App" >
+        <h1 className="search-title ">STAR WARS CHARACTERS</h1>
         <SearchBox onChangeHandler={onSearchChange} placeholder={'search Starwars'} className='starwars-search-box' />
-
-        {/*
-          filteredNames.map((character) => {
-            return (
-              <div>
-                <h1 key={character.id}>{character.name}</h1>
-              </div>
-            );
-          })
-        */}
         <CardList characters={filteredNames} />
       </div>
     );

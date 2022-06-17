@@ -11,3 +11,11 @@ body {
       rgba(0, 128, 128, 1) 100%);
   text-align: center;
 }
+
+.search-title {
+  font-size: 4rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+  font-family: 'Work Sans', sans-serif;
+}
