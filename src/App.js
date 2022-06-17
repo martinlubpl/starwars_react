@@ -1,5 +1,5 @@
 import { Component } from 'react';
-
+import CardList from './components/card-list/card-list.component';
 // import logo from './logo.svg';
 import './App.css';
 
@@ -50,7 +50,7 @@ class App extends Component {
           type='search'
           placeholder='search'
           onChange={onSearchChange} />
-        {
+        {/*
           filteredNames.map((character) => {
             return (
               <div>
@@ -58,7 +58,8 @@ class App extends Component {
               </div>
             );
           })
-        }
+        */}
+        <CardList characters={filteredNames} />
       </div>
     );
   }
